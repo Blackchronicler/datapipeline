@@ -1,2 +1,1 @@
-# ITECH LF8
-## Daten systemübergreifend bereitstellen 
+# ITECH LF8 - Daten systemübergreifend bereitstellen 
