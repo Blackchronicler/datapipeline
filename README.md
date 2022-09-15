@@ -9,3 +9,5 @@
 - Daten aufbereiten und zur weiteren Nutzung zur Verfügung stellen
 - Mindestens Unit und Integration Tests implementieren 
 - CI / CD Pipeline aufbauen und automatisieren
+
+clone done test feyza
