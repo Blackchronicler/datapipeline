@@ -1,66 +1,43 @@
-import base64
 from github import Github
-from pprint import pprint
 
-# Github username
-username = "x4nth055"
 # pygithub object
-g = Github("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")
-# get that user by username
-user = g.get_user(username)
+g = Github()
 
 
-def print_repo(repo):
-    # repository full name
-    print("Full name:", repo.full_name)
-    # repository description
-    print("Description:", repo.description)
-    # the date of when the repo was created
-    print("Date created:", repo.created_at)
-    # the date of the last git push
-    print("Date of last push:", repo.pushed_at)
-    # home website (if available)
-    print("Home Page:", repo.homepage)
-    # programming language
-    print("Language:", repo.language)
-    # number of forks
-    print("Number of forks:", repo.forks)
-    # number of stars
-    print("Number of stars:", repo.stargazers_count)
-    print("-" * 50)
-    # repository content (files & directories)
-    print("Contents:")
-    for content in repo.get_contents(""):
-        print(content)
-    # try:
-    # repo license
-    # print("License:", base64.b64decode(repo.get_license().content.encode()).decode())
-    # except:
-    # pass
+# get repositories of an organization by name
+def get_org_repos_by_name(name):
+    org = g.get_organization(name)
+    print("Organization: ", org.login)
+    org_repos = org.get_repos()
+    return org_repos
 
 
-# search by programming language
-def find_py_repos():
-    #    for i, repo in enumerate(g.search_repositories("language:python")):
-    #        print_repo(repo)
-    #        print("=" * 100)
-    #        if i == 9:
-    #            break
-
-    # enumerate_py = enumerate(g.search_repositories("language:python"))
-    # print(len(list(enumerate_py)))
-
-    org = g.get_organization("PyGithub")
-    print(org.login)
-
-    repositories = list(g.search_repositories(query='language:python'))
-    len_repo = len(repositories)
-    #for repo in repositories:
-    print(len_repo)
+# get all used languages on one organization
+def get_all_languages(org_repos):
+    languages = list()
+    for repo in org_repos:
+        if repo.language not in languages:
+            languages.append(repo.language)
+    return languages
 
 
-# for repo in user.get_repos():
-#    print_repo(repo)
+# get the number of used repositories based on used language
+def get_lan_num(org_repos, languages):
+    lan_num = []
+    for lan in languages:
+        temp = []
+        counter = 0
+        temp.append(lan)
+        for repo in org_repos:
+            if lan == repo.language:
+                counter += 1
+        temp.append(counter)
+        lan_num.append(temp)
+
+    return lan_num
 
 
-find_py_repos()
+facebook = get_org_repos_by_name("facebook")
+
+print(get_lan_num(facebook, get_all_languages(facebook)))
+print(get_all_languages(facebook))
