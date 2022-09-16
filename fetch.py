@@ -41,3 +41,32 @@ facebook = get_org_repos_by_name("facebook")
 
 print(get_lan_num(facebook, get_all_languages(facebook)))
 print(get_all_languages(facebook))
+print(len(list(facebook)), " Repos")
+
+
+twitter = get_org_repos_by_name("twitter")
+
+print(get_lan_num(facebook, get_all_languages(twitter)))
+print(get_all_languages(twitter))
+print(len(list(twitter)), " Repos")
+
+
+netflix = get_org_repos_by_name("netflix")
+
+print(get_lan_num(netflix, get_all_languages(netflix)))
+print(get_all_languages(netflix))
+print(len(list(netflix)), " Repos")
+
+
+adobe = get_org_repos_by_name("adobe")
+
+print(get_lan_num(adobe, get_all_languages(adobe)))
+print(get_all_languages(adobe))
+print(len(list(adobe)), " Repos")
+
+
+ubuntu = get_org_repos_by_name("ubuntu")
+
+print(get_lan_num(ubuntu, get_all_languages(ubuntu)))
+print(get_all_languages(ubuntu))
+print(len(list(ubuntu)), " Repos")
