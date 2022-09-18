@@ -4,11 +4,13 @@ from pprint import pprint
 
 ## Getting PAT for auth @ GitHub
 with open("/home/tasongwe/workspace_itech/git/lf8/pat.txt", "r") as f:
-    pwd_token = f.read()
-    #print(pwd_token)
+    access_tokens = f.readlines()
+    user = access_tokens[0]
+    pwd_token = access_tokens[1]
+    #print(user, pwd_token, sep="")
 
 ## Accessing GitHub User
-user = "Blackchronicler"
+#user = "Blackchronicler"
 access_code = pwd_token
 r_user = requests.get(f'https://api.github.com/users/{user}', auth=(user, access_code))
 
