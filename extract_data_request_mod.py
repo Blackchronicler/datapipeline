@@ -2,10 +2,10 @@ from unicodedata import name
 import requests
 from pprint import pprint
 
-# # Getting PAT for auth @ GitHub
-f = open("/home/tasongwe/workspace_itech/git/lf8/pat.txt", "r")
-pwd_token = f.read()
-#print(pwd_token)
+## Getting PAT for auth @ GitHub
+with open("/home/tasongwe/workspace_itech/git/lf8/pat.txt", "r") as f:
+    pwd_token = f.read()
+    #print(pwd_token)
 
 ## Accessing GitHub User
 user = "Blackchronicler"
@@ -24,5 +24,3 @@ r_orga = requests.get("https://api.github.com/orgs/get", params= payload)
 
 print(r_orga.status_code, "\n", r_orga.raise_for_status(), sep="")
 pprint(r_orga.json())
-
-f.close()

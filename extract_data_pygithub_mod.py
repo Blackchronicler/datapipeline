@@ -14,18 +14,19 @@ def getting_user(names):
     except Exception as e:
         print(f"We have the following problem with \"User Name\": {str(e)}")
         
-def confirm_organisation(name):
+def getting_organisation(name):
     try:
-        ## Getting organisation name
         orga = g.get_organization(name)
         print(f"The following Organisation exists: {orga.login}")
-
+        repos = list(orga.get_repos(type="all"))
+        print(f"The Organisation has: {len(repos)} repositories.")
     except Exception as e:
-        print(f"We have the following problem with \"Organisation Name\": {str(e)}")
+        print(f'We have the following problem with \"Organisation Name\": {str(e)}')
+
         
         
 
 
 if __name__ == "__main__":
-    getting_user("steph-omi")  #test
-    confirm_organisation("netflix")  #test
+    getting_user("blackchronicler")  #test
+    getting_organisation("OSGeo")  #test
