@@ -1,3 +1,4 @@
+from unicodedata import name
 import requests
 from pprint import pprint
 
@@ -23,3 +24,5 @@ r_orga = requests.get("https://api.github.com/orgs/get", params= payload)
 
 print(r_orga.status_code, "\n", r_orga.raise_for_status(), sep="")
 pprint(r_orga.json())
+
+f.close()
