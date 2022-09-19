@@ -1,3 +1,5 @@
 venv_lf8/
 scrapwork.py
-.idea
+pat.txt
+__pycache__/
+*.pyc
