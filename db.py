@@ -1,5 +1,6 @@
 import psycopg2
 
+
 conn = psycopg2.connect(
     host="localhost",
     database="postgres",
@@ -7,6 +8,7 @@ conn = psycopg2.connect(
     password="postgres")
 
 cur = conn.cursor()
+#print(res["organisation"])
 
 # cur.execute("INSERT INTO public.organizations(org_name, repos, members)VALUES (%s, %s, %s);",
 #            ("test", 143, 760))
@@ -22,5 +24,3 @@ rows = cur.fetchall()
 for r in rows:
     print(r)
 
-cur.close()
-conn.close()
