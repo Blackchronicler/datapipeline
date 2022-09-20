@@ -65,8 +65,8 @@ print(get_all_languages(adobe))
 print(len(list(adobe)), " Repos")
 
 
-ubuntu = get_org_repos_by_name("ubuntu")
+#ubuntu = get_org_repos_by_name("ubuntu")
 
-print(get_lan_num(ubuntu, get_all_languages(ubuntu)))
-print(get_all_languages(ubuntu))
-print(len(list(ubuntu)), " Repos")
+#print(get_lan_num(ubuntu, get_all_languages(ubuntu)))
+#print(get_all_languages(ubuntu))
+#print(len(list(ubuntu)), " Repos")
