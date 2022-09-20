@@ -1,0 +1,33 @@
+import psycopg2
+
+#connect to the db
+con = psycopg2.connect(
+    host = "localhost",
+    database = "testDB",
+    user = "postgres",
+    password = "Qwertz2:10")
+
+#cursor
+cur = con.cursor()
+
+#execute query
+def read_query():
+    cur.execute("SELECT id, name FROM employees")
+
+    rows = cur.fetchall()
+
+    for r in rows:
+        print(f"id {r[0]} name {r[1]}")
+
+def new_value():
+    cur.execute("INSERT INTO employees(id, name) VALUES (1, 'pedro');")
+    con.commit()
+
+new_value()
+read_query()
+
+#close the cursor
+cur.close()
+
+#close the connection
+con.close()

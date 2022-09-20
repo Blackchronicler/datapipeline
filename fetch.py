@@ -5,7 +5,7 @@ from pprint import pprint
 # Github username
 username = "x4nth055"
 # pygithub object
-g = Github("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")
+g = Github()
 # get that user by username
 user = g.get_user(username)
 
@@ -55,8 +55,8 @@ def find_py_repos():
 
     repositories = list(g.search_repositories(query='language:python'))
     len_repo = len(repositories)
-    #for repo in repositories:
-    print(len_repo)
+    for repo in repositories:
+        print(len_repo)
 
 
 # for repo in user.get_repos():
