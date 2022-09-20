@@ -24,3 +24,7 @@ rows = cur.fetchall()
 for r in rows:
     print(r)
 
+
+if __name__ == "__main__":
+    pass
+

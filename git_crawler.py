@@ -78,7 +78,7 @@ class GitCrawler:
             return f'We have the following problem with \"Organisation Details\": {str(e)}'
 
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
     # Git_Crawler("blackchronicler")._getting_user()
-    sample = GitCrawler("OSGeo")._getting_organisation_details()
-    print(sample)
+ #   sample = GitCrawler("OSGeo")._getting_organisation_details()
+  #  print(sample)

@@ -16,8 +16,8 @@ def get_org_repos_by_name(name):
 def get_all_languages(org_repos):
     languages = list()
     for repo in org_repos:
-        if repo.language not in languages:
-            languages.append(repo.language)
+        if repo.index not in languages:
+            languages.append(repo.index)
     return languages
 
 
@@ -29,7 +29,7 @@ def get_lan_num(org_repos, languages):
         counter = 0
         temp.append(lan)
         for repo in org_repos:
-            if lan == repo.language:
+            if lan == repo.index:
                 counter += 1
         temp.append(counter)
         lan_num.append(temp)
