@@ -3,7 +3,7 @@ import requests
 from pprint import pprint
 
 ## Getting PAT for auth @ GitHub
-with open("./pat.txt", "r") as f:
+with open("/home/tasongwe/workspace_itech/git/lf8/pat.txt", "r") as f:
     access_tokens = f.readlines()
     user = access_tokens[0]
     pwd_token = access_tokens[1]
