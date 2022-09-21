@@ -35,13 +35,13 @@ class Loader:
         for index in range(len(temp_lang_details["languages"])):
             # TO-DO: Build Check
             # Check if organisation already exist
-            cur.execute("SELECT * FROM public.languages WHERE org_name='%s' AND name='%s'" % (organisation, temp_lang_details["languages"][index]))
+            cur.execute("SELECT * FROM public.languages WHERE org_name='%s' AND lang_name='%s'" % (organisation, temp_lang_details["languages"][index]))
             rows = cur.fetchall()
 
             if len(rows) > 0:
-                cur.execute("DELETE FROM public.languages WHERE org_name='%s' AND name='%s'" % (organisation, temp_lang_details["languages"][index]))
+                cur.execute("DELETE FROM public.languages WHERE org_name='%s' AND lang_name='%s'" % (organisation, temp_lang_details["languages"][index]))
 
-            cur.execute("INSERT INTO public.languages(name, bytes, org_name)VALUES (%s, %s, %s);",
+            cur.execute("INSERT INTO public.languages(lang_name, bytes, org_name)VALUES (%s, %s, %s);",
                         (temp_lang_details["languages"][index], int(temp_lang_details["bytes"][index]), organisation))
 
         conn.commit()
