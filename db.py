@@ -8,23 +8,20 @@ conn = psycopg2.connect(
     password="postgres")
 
 cur = conn.cursor()
-#print(res["organisation"])
 
-# cur.execute("INSERT INTO public.organizations(org_name, repos, members)VALUES (%s, %s, %s);",
-#            ("test", 143, 760))
-# cur.execute("INSERT INTO public.organizations(org_name, repos, members)VALUES (%s, %s, %s);",
-#            ("test1", 143, 760))
-# cur.execute("INSERT INTO public.organizations(org_name, repos, members)VALUES (%s, %s, %s);",
-#            ("test2", 143, 760))
-# conn.commit()
-
-cur.execute("SELECT * FROM public.organizations")
-rows = cur.fetchall()
-
-for r in rows:
-    print(r)
-
-
+## Testing purposes -> to be deleted
 if __name__ == "__main__":
-    pass
+    cur.execute("SELECT * FROM public.organizations")
+    rows = cur.fetchall()
+
+    for r in rows:
+        print(r)
+
+    # cur.execute("INSERT INTO public.organizations(org_name, repos, members)VALUES (%s, %s, %s);",
+    #            ("test", 143, 760))
+    # cur.execute("INSERT INTO public.organizations(org_name, repos, members)VALUES (%s, %s, %s);",
+    #            ("test1", 143, 760))
+    # cur.execute("INSERT INTO public.organizations(org_name, repos, members)VALUES (%s, %s, %s);",
+    #            ("test2", 143, 760))
+    # conn.commit()
 
