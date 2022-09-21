@@ -1,3 +1,4 @@
+# Importing necessary libraries
 from secrets import token_bytes
 import requests
 from pprint import pprint
@@ -7,15 +8,14 @@ import pandas as pd
 class Git_Crawler:
         
     ## Getting PAT for auth @ GitHub
-    with open("/home/tasongwe/workspace_itech/git/lf8/pat.txt", "r") as f:
+    with open("pat.txt", "r") as f:
         access_tokens = f.readlines()
         user_token = access_tokens[0]
         pwd_token = access_tokens[1]
-        #print(user, pwd_token, sep="")
 
-    # Instantiating GitHub
-    #g = Github(login_or_token= user_token, password= pwd_token)
-    g = Github()
+    ## Instantiating GitHub
+    g = Github(login_or_token= user_token, password= pwd_token)
+    #g = Github()
 
     def __init__(self, git_entity : str) -> None:
         self.git_entity = git_entity
@@ -29,7 +29,7 @@ class Git_Crawler:
             return (f"The User\'s name is: {user.name}")
 
         except Exception as e:
-            return f"We have the following problem with \"User Name\": {str(e)}"
+            print(f"We have the following problem with \"User Name\": {str(e)}")
         
         
     def _getting_languages_used(self):
@@ -49,7 +49,7 @@ class Git_Crawler:
             return df
         
         except Exception as e:
-            return f'We have the following problem with \"Organisation Languages\": {str(e)}'
+            print(f'We have the following problem with \"Organisation Languages\": {str(e)}')
         
             
     def _getting_organisation_details(self):
@@ -73,10 +73,10 @@ class Git_Crawler:
             return df 
                 
         except Exception as e:
-            return f'We have the following problem with \"Organisation Details\": {str(e)}'
+            print(f'We have the following problem with \"Organisation Details\": {str(e)}')
         
 
-
-#Git_Crawler("blackchronicler")._getting_user()
-sample = Git_Crawler("OSGeo")._getting_languages_used()
-print(sample)
+## Testing Stuff -> to be deleted
+if __name__ == "__main__":
+    sample = Git_Crawler("OSGeo")._getting_organisation_details()
+    print(sample)
