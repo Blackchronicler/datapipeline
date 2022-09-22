@@ -1,5 +1,6 @@
 -- Creating necessary tables --
 
+DROP TABLE IF EXISTS orga_langs;
 DROP TABLE IF EXISTS languages;
 DROP TABLE IF EXISTS organisation; 
 CREATE TABLE IF NOT EXISTS organisation (
@@ -19,3 +20,4 @@ CREATE TABLE IF NOT EXISTS orga_langs (
                                         orga_langs_id int NOT NULL PRIMARY KEY,
                                         organisation_id int NOT NULL REFERENCES organisation(orga_id),
                                         language_typ_id int NOT NULL REFERENCES languages(lang_id));
+
