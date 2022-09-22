@@ -45,7 +45,8 @@ class Git_Crawler:
                         languages_used[language] = langs_used[language] 
                     else:
                         languages_used[language] = (languages_used[language] + langs_used[language])
-            df = pd.DataFrame(list(languages_used.items()), columns=["languages", "bytes"])
+            df = pd.DataFrame(list(languages_used.items()), columns=["language_typ", "bytes"])
+            df["organisation_name"] = [orga.login for _ in range(len(df))]
             return df
         
         except Exception as e:
@@ -64,7 +65,7 @@ class Git_Crawler:
             members = list(orga.get_members(filter_="all"))
             repos = list(orga.get_repos(type= "all", sort= "full_name"))
             data_collected = {
-                "organisation" : [orga_name],
+                "organisation_name" : [orga_name],
                 "number of members" : [len(members)],
                 "number of repositories" : [len(repos)],
                 "number of languages" : [len(self._getting_languages_used())]
@@ -78,5 +79,5 @@ class Git_Crawler:
 
 ## Testing Stuff -> to be deleted
 if __name__ == "__main__":
-    sample = Git_Crawler("OSGeo")._getting_organisation_details()
-    print(sample)
+    sample = Git_Crawler("OSGeo")._getting_languages_used()
+    print(type(int(sample["bytes"][2])))
