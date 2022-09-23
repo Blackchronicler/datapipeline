@@ -1,5 +1,4 @@
 # Importing necessary libraries
-from secrets import token_bytes
 import requests
 from pprint import pprint
 from github import Github
