@@ -1,0 +1,4 @@
+pandas
+pygithub
+httpretty
+psycopg2-binary
