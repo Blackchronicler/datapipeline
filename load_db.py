@@ -1,8 +1,5 @@
 # Importing necessary libraries
-import psycopg2
-from git_crawler import Git_Crawler as gc
 from io import StringIO
-import pandas as pd
 from connect_to_db import ConnectToDatabase
 
 # Connection to database

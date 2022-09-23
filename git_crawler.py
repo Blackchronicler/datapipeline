@@ -1,5 +1,4 @@
 # Importing necessary libraries
-import requests
 from pprint import pprint
 from github import Github
 import pandas as pd
