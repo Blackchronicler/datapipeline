@@ -1,11 +1,11 @@
-# ITECH LF8
+# Github Data Pipeline
 
-### Daten systemübergreifend bereitstellen 
+### Provide data across systemsDaten systemübergreifend bereitstelle
 
-#### Ziele:
+#### Aim:
 
-- Github besser kennen lernen
-- Daten aus dezentralen Quellen zusammenführen
-- Daten aufbereiten und zur weiteren Nutzung zur Verfügung stellen
-- Mindestens Unit und Integration Tests implementieren 
-- CI / CD Pipeline aufbauen und automatisieren
+- Get to know Github better
+- Merge data from decentralized sources
+- Prepare data and make it available for further use
+- Implement at least unit and integration tests
+- Build and automate CI / CD pipeline
