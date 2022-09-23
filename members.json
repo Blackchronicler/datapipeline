@@ -1,0 +1,42 @@
+[
+  {
+    "login": "tbonfort",
+    "id": 358469,
+    "node_id": "MDQ6VXNlcjM1ODQ2OQ==",
+    "avatar_url": "https://avatars.githubusercontent.com/u/358469?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/tbonfort",
+    "html_url": "https://github.com/tbonfort",
+    "followers_url": "https://api.github.com/users/tbonfort/followers",
+    "following_url": "https://api.github.com/users/tbonfort/following{/other_user}",
+    "gists_url": "https://api.github.com/users/tbonfort/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/tbonfort/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/tbonfort/subscriptions",
+    "organizations_url": "https://api.github.com/users/tbonfort/orgs",
+    "repos_url": "https://api.github.com/users/tbonfort/repos",
+    "events_url": "https://api.github.com/users/tbonfort/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/tbonfort/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  {
+    "login": "tmszi",
+    "id": 50632337,
+    "node_id": "MDQ6VXNlcjUwNjMyMzM3",
+    "avatar_url": "https://avatars.githubusercontent.com/u/50632337?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/tmszi",
+    "html_url": "https://github.com/tmszi",
+    "followers_url": "https://api.github.com/users/tmszi/followers",
+    "following_url": "https://api.github.com/users/tmszi/following{/other_user}",
+    "gists_url": "https://api.github.com/users/tmszi/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/tmszi/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/tmszi/subscriptions",
+    "organizations_url": "https://api.github.com/users/tmszi/orgs",
+    "repos_url": "https://api.github.com/users/tmszi/repos",
+    "events_url": "https://api.github.com/users/tmszi/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/tmszi/received_events",
+    "type": "User",
+    "site_admin": false
+  }
+]

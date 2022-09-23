@@ -26,7 +26,7 @@ class GitCrawler:
 
         try:
             user = self.g.get_user(self.git_entity)
-            return f"The User\'s name is: {user.name}"
+            return user
 
         except Exception as e:
             return f"We have the following problem with \"User Name\": {str(e)}"
