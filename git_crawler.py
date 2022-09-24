@@ -1,9 +1,8 @@
 # Importing necessary libraries
-from pprint import pprint
 from github import Github
 import pandas as pd
 
-class Git_Crawler:
+class GitCrawler:
         
     ## Getting PAT for auth @ GitHub
     with open("pat.txt", "r") as f:
@@ -45,11 +44,11 @@ class Git_Crawler:
                         languages_used[language] = (languages_used[language] + langs_used[language])
             df = pd.DataFrame(list(languages_used.items()), columns=["language_typ", "bytes"])
             df["organisation_name"] = [orga.login for _ in range(len(df))]
+            return df
         
         except Exception as e:
             print(f'We have the following problem with \"Organisation Languages\": {str(e)}')
-        
-        return df
+            #exit(1)
         
             
     def _getting_organisation_details(self):
@@ -70,13 +69,13 @@ class Git_Crawler:
                 "number of languages" : [len(self._getting_languages_used())]
                 }
             df = pd.DataFrame(data_collected)
+            return df
                 
         except Exception as e:
             print(f'We have the following problem with \"Organisation Details\": {str(e)}')
-        
-        return df 
+            #exit(1) 
 
 ## Testing Stuff -> to be deleted
-if __name__ == "__main__":
-    sample = Git_Crawler("OSGeo")._getting_languages_used()
-    print(sample.head())
+# if __name__ == "__main__":
+#     sample = GitCrawler("OSGeo")._getting_languages_used()
+#     print(sample.head())

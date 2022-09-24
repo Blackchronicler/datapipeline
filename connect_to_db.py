@@ -1,5 +1,4 @@
-# Importing necessary llibraries
-from git_crawler import Git_Crawler as gc
+# Importing necessary libraries
 import psycopg2
 
 class ConnectToDatabase:
@@ -9,24 +8,27 @@ class ConnectToDatabase:
 
     def _connecting_to_db():
         """ Connect to the PostgreSQL database server """
+
+        # Getting PAT for auth @ Database
+        with open("pat.txt", "r") as f:
+            access_tokens = f.readlines()
+            user_token = access_tokens[2]
+            pwd_token = access_tokens[3]
         
         # Connection details
         db_parameters = {
         "host" : "localhost",
         "database" : "development",
-        "user" : gc.access_tokens[2],
-        "password" : gc.access_tokens[3],
+        "user" : user_token,
+        "password" : pwd_token,
         "port" : 5432 }
         
         try:
-            print("Connecting to the PostgreSQL database...")
+            print("\n", "Connecting to the PostgreSQL database...Please wait...", "\n", sep="")
             conn= psycopg2.connect(**db_parameters)
             print("Connection successful :) ")
             return conn
 
         except Exception as e:
             print(f"Connection to database was unsuccessful because: {str(e)}")
-        
-## Testing Stuff -> to be deleted
-if __name__ == "__main__":
-    ConnectToDatabase._connecting_to_db()
+            exit(1)
