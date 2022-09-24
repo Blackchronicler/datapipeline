@@ -1,6 +1,6 @@
 # Github Data Pipeline
 
-### Provide data across systemsDaten systemübergreifend bereitstelle
+### Provide data across several systems
 
 #### Aim:
 
