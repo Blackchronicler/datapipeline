@@ -31,4 +31,7 @@ class ConnectToDatabase:
 
         except Exception as e:
             print(f"Connection to database was unsuccessful because: {str(e)}")
-            exit(1)
+            #exit(1)
+            
+if __name__ == "__main__":
+    ConnectToDatabase._connecting_to_db()

@@ -55,13 +55,13 @@ def create_tables_db(conn):
     
     cur.close()
     
-def main(conn):
+def main():
     """ Executes the above """
-
+    conn = ConnectToDatabase._connecting_to_db()
     delete_tables_db(conn)
     create_tables_db(conn)
     conn.close()
     
 
 if __name__ == "__main__":
-    main(conn)
+    main()
