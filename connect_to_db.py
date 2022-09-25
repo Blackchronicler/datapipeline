@@ -18,10 +18,10 @@ class ConnectToDatabase:
         # Connection details
         db_parameters = {
         "host" : "localhost",
-        "database" : "development",
+        "database" : "wsl",
         "user" : user_token,
         "password" : pwd_token,
-        "port" : 5432 }
+        "port" : 5432}
         
         try:
             print("\n", "Connecting to the PostgreSQL database...Please wait...", "\n", sep="")
