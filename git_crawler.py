@@ -4,7 +4,7 @@ import pandas as pd
 
 class GitCrawler:
     ## Getting PAT for auth @ GitHub
-
+    """
     with open("./pat.txt", "r") as f:
         access_tokens = f.readlines()
         user_token = access_tokens[0]
@@ -13,8 +13,9 @@ class GitCrawler:
 
     # Instantiating GitHub
     g = Github(login_or_token=user_token, password=pwd_token)
+    """
 
-    #g = Github()
+    g = Github()
 
     def __init__(self, git_entity: str) -> None:
         self.git_entity = git_entity
