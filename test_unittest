@@ -1,0 +1,16 @@
+from unittest import TestCase
+import httpretty
+from git_crawler import GitCrawler 
+
+class JsonContent:    
+    def __init__(self, name):
+        self.name = name
+
+    def __get__(self, instance, owner):
+        if instance is None:
+            return owner
+
+        with open(f'your/path/{self.name}.json') as file:
+            setattr(instance, self.name, file.read())
+
+        return getattr(instance, self.name)

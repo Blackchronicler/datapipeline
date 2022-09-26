@@ -1,33 +1,15 @@
-import psycopg2
+from tkinter import *
 
-#connect to the db
-con = psycopg2.connect(
-    host = "localhost",
-    database = "testDB",
-    user = "postgres",
-    password = "Qwertz2:10")
+root = Tk()
 
-#cursor
-cur = con.cursor()
+def angle(n):
+    return 360*n/1000
 
-#execute query
-def read_query():
-    cur.execute("SELECT id, name FROM employees")
+Label(root, text="Pie Chart").pack()
 
-    rows = cur.fetchall()
+canvas = Canvas(root, width=200, height=200)
+canvas.pack()
 
-    for r in rows:
-        print(f"id {r[0]} name {r[1]}")
+canvas.create_arc((2,2,150,150), fill="red", outline="red")
 
-def new_value():
-    cur.execute("INSERT INTO employees(id, name) VALUES (1, 'pedro');")
-    con.commit()
-
-new_value()
-read_query()
-
-#close the cursor
-cur.close()
-
-#close the connection
-con.close()
+root.mainloop()
