@@ -1,8 +1,12 @@
+# Importing necessary libraries
+from secrets import token_bytes
+import requests
+from pprint import pprint
 from github import Github
 import pandas as pd
 
-
-class GitCrawler:
+class Git_Crawler:
+        
     ## Getting PAT for auth @ GitHub
     """
     with open("./pat.txt", "r") as f:
@@ -42,12 +46,15 @@ class GitCrawler:
                         languages_used[language] = langs_used[language]
                     else:
                         languages_used[language] = (languages_used[language] + langs_used[language])
-            df = pd.DataFrame(list(languages_used.items()), columns=["languages", "bytes"])
-            return df
-
+            df = pd.DataFrame(list(languages_used.items()), columns=["language_typ", "bytes"])
+            df["organisation_name"] = [orga.login for _ in range(len(df))]
+        
         except Exception as e:
-            return f'We have the following problem with \"Organisation Languages\": {str(e)}'
-
+            print(f'We have the following problem with \"Organisation Languages\": {str(e)}')
+        
+        return df
+        
+            
     def _getting_organisation_details(self):
         """
         Extracting the necessary organisational data 
