@@ -1,6 +1,5 @@
 import psycopg2
 
-
 conn = psycopg2.connect(
     host="localhost",
     database="postgres",
@@ -8,7 +7,6 @@ conn = psycopg2.connect(
     password="postgres")
 
 cur = conn.cursor()
-
 ## Testing purposes -> to be deleted
 if __name__ == "__main__":
     cur.execute("SELECT * FROM public.organizations")

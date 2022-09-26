@@ -1,7 +1,6 @@
 import unittest
-import pytest
 from unittest.mock import Mock
-from git_crawler import Git_Crawler
+from git_crawler import GitCrawler
 
 class CrawlerTester(unittest.TestCase):
     
