@@ -1,22 +1,7 @@
--- Creating necessary tables --
-
-DROP TABLE IF EXISTS orga_langs;
-DROP TABLE IF EXISTS languages;
-DROP TABLE IF EXISTS organisation; 
-CREATE TABLE IF NOT EXISTS organisation (
-                                        orga_id SERIAL NOT NULL PRIMARY KEY,
-                                        organisation_name varchar(100) NOT NULL,
-                                        number_of_members int NOT NULL,
-                                        number_of_repositories int NOT NULL,
-                                        number_of_languages int NOT NULL);
-	                       
-CREATE TABLE IF NOT EXISTS languages (
-                                        lang_id SERIAL NOT NULL PRIMARY KEY,
-                                        language_typ varchar(100) NOT NULL,
-                                        number_of_bytes int NOT NULL,
-                                        organisation_name varchar(100) NOT NULL);
-                                        
-CREATE TABLE IF NOT EXISTS orga_langs (
-                                        orga_langs_id SERIAL NOT NULL PRIMARY KEY,
-                                        organisation_id int NOT NULL REFERENCES organisation(orga_id),
-                                        language_typ_id int NOT NULL REFERENCES languages(lang_id));
+--SELECT * FROM public.languages;
+--select organisation.number_of_members, organisation.organisation_name from organisation inner join languages
+--on organisation.organisation_name = languages.organisation_name
+--select language_typ, number_of_bytes from public.languages where organisation_name = 'facebook' order by number_of_bytes desc
+--select sum(number_of_bytes) from public.languages where organisation_name = 'facebook'
+--select organisation_name, number_of_members, number_of_repositories, number_of_languages from organisation where organisation_name= 'facebook'
+--select organisation_name, number_of_bytes from public.languages where language_typ= 'Python'
