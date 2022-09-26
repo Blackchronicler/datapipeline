@@ -1,5 +1,6 @@
 # Importing necessary libraries
 import psycopg2
+from psycopg2.pool import ThreadedConnectionPool
 
 class ConnectToDatabase:
     
@@ -9,19 +10,21 @@ class ConnectToDatabase:
     def _connecting_to_db():
         """ Connect to the PostgreSQL database server """
 
-        # Getting PAT for auth @ Database
-        with open("pat.txt", "r") as f:
-            access_tokens = f.readlines()
-            user_token = access_tokens[2]
-            pwd_token = access_tokens[3]
+        # # Getting PAT for auth @ Database
+        # with open("pat.txt", "r") as f:
+        #     access_tokens = f.readlines()
+        #     user_token = access_tokens[2]
+        #     pwd_token = access_tokens[3]
         
         # Connection details
         db_parameters = {
         "host" : "localhost",
-        "database" : "wsl",
-        "user" : user_token,
-        "password" : pwd_token,
-        "port" : 5432}
+        "dbname" : "wsl",
+        "user" : "thierry",
+        "password" : "admin",
+        "port" : 5432,
+        "options" : "-c search_path=dbo,github"
+        }
         
         try:
             print("\n", "Connecting to the PostgreSQL database...Please wait...", "\n", sep="")

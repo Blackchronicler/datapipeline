@@ -1,5 +1,7 @@
 # Importing necessary libraries
 from io import StringIO
+from connect_to_db import ConnectToDatabase as cd
+from git_crawler import GitCrawler as gc
 
 class PopulateDatabase:
     
@@ -18,7 +20,7 @@ class PopulateDatabase:
         try:
             cur.copy_from(buffer, self.table_name, sep=",")
             self.conn.commit()
-            print(f"Data has been uploaded to the table: {table_name} in the DB. :D ")
+            print(f"Data has been uploaded to the table: {self.table_name} in the DB. :D ")
             
         except Exception as e:
             print(f"Error while populating table(s): {str(e)}")
@@ -26,3 +28,6 @@ class PopulateDatabase:
 
         cur.close()
         self.conn.close()
+
+if __name__ == "__main__":
+    PopulateDatabase(cd._connecting_to_db(), gc("OSGeo")._getting_organisation_details(), "organisation")._populate_db()
