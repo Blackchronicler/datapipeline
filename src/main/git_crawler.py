@@ -22,21 +22,22 @@ class GitCrawler:
             exit(1)
 
     def _getting_languages_used(self):
+        
         """ Getting all programming languages being used in the organisation """
-         try:
-                org = self.g.get_organization(self.git_entity)
-                repos = list(org.get_repos(type="all", sort="full_name"))
-                languages_used = {}
-                for repo in repos[:5]:
-                    langs_used = repo.get_languages()
-                    for language in langs_used:
-                        if language not in languages_used:
-                            languages_used[language] = langs_used[language] 
-                        else:
-                            languages_used[language] = (languages_used[language] + langs_used[language])
-                df = pd.DataFrame(list(languages_used.items()), columns=["language_typ", "bytes"])
-                df["organisation_name"] = [org.login for _ in range(len(df))]
-                return df
+        try:
+            org = self.g.get_organization(self.git_entity)
+            repos = list(org.get_repos(type="all", sort="full_name"))
+            languages_used = {}
+            for repo in repos[:5]:
+                langs_used = repo.get_languages()
+                for language in langs_used:
+                    if language not in languages_used:
+                        languages_used[language] = langs_used[language] 
+                    else:
+                        languages_used[language] = (languages_used[language] + langs_used[language])
+            df = pd.DataFrame(list(languages_used.items()), columns=["language_typ", "bytes"])
+            df["organisation_name"] = [org.login for _ in range(len(df))]
+            return df
 
         except Exception as e:
             print(f'We have the following problem with \"Organisation Languages\": {str(e)}')
