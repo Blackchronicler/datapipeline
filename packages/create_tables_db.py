@@ -1,5 +1,5 @@
 # Importing necessary libraries
-from connect_to_db import ConnectToDatabase
+#from packages.connect_to_db import ConnectToDatabase
 
 #  Tables and queries for database
 database_tables = ["org_langs", "languages", "organisation"]
@@ -31,11 +31,12 @@ def delete_tables_db(conn):
         for table in database_tables:
             cur.execute(f"DROP TABLE IF EXISTS {table};")
         conn.commit()    
-        print("All tables have been deleted from the database!!")
+        print("All tables have been deleted from the database!!", "\n", sep="")
     
     except Exception as e:
         print(f"Error while deleting table(s): {str(e)}")
         conn.rollback()
+        return 1
     
     cur.close()
 
@@ -47,20 +48,26 @@ def create_tables_db(conn):
         for query in create_queries:
             cur.execute(create_queries[query])
         conn.commit()
-        print("Tables successfully created in the database.")
+        print("Table(s) successfully created in the database!! :D", "\n", sep="")
         
     except Exception as e:
         print(f"Error while creating table(s): {str(e)}")
         conn.rollback()
+        return 1
     
     cur.close()
     
-def main():
+def main(conn):
     """ Executes the above """
-    conn = ConnectToDatabase._connecting_to_db()
-    delete_tables_db(conn)
-    create_tables_db(conn)
-    conn.close()
+    
+    try:
+        delete_tables_db(conn)
+        create_tables_db(conn)
+        conn.close()
+        
+    except Exception as e:
+        print(f"Error while running the main method in create_tables_db file: {str(e)}")
+        exit(1)
     
 
 if __name__ == "__main__":

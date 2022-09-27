@@ -1,11 +1,13 @@
 # Importing necessary libraries
-from connect_to_db import ConnectToDatabase
-import create_tables_db
-from git_crawler import GitCrawler as gc
-from load_db import PopulateDatabase
-from fetch_data import FetchData
+from packages.connect_to_db import ConnectToDatabase
+import packages.create_tables_db as create_tables_db
+from packages.git_crawler import GitCrawler
+from packages.load_db import PopulateDatabase
+from packages.fetch_data import FetchData
+import pandas as pd
 
-orgs_wanted = ["facebook", "netflix", "twitter", "adobe", "ubuntu", "OSGeo"]
+#orgs_wanted = ["facebook", "netflix", "twitter", "adobe", "ubuntu", "OSGeo"]
+orgs_wanted = ["OSGeo"]
 database_tables = ["languages", "organisation"] 
 
 # Connection to Database
@@ -15,16 +17,25 @@ conn = ConnectToDatabase._connecting_to_db()
 create_tables_db.main(conn)
 
 # Crawl Github
-df_orgs = gc(orgs_wanted[5])._getting_organisation_details()
-df_langs = gc(orgs_wanted[5])._getting_languages_used()
+df_orgs = []
+df_langs = []
+
+for org in orgs_wanted:
+    print(f"Fetching data from {org}.", "\n", sep="")
+    df_orgs.append(GitCrawler(org)._getting_organisation_details())
+    df_langs.append(GitCrawler(org)._getting_languages_used())
+
+# Combining all the dataframes to a single dataframe    
+final_df_orgs = pd.concat(df_orgs, axis=0)
+final_df_orgs = final_df_orgs.reset_index(drop=True)    # Organisation
+final_df_langs = pd.concat(df_langs, axis=0)
+final_df_langs = final_df_langs.reset_index(drop=True)  # Languages
 
 # Load database tables
-PopulateDatabase._populate_db(conn, df_langs, database_tables[0])
-PopulateDatabase._populate_db(conn, df_orgs, database_tables[1])
+PopulateDatabase(final_df_langs, database_tables[0])._populate_db()
+PopulateDatabase(final_df_orgs, database_tables[1])._populate_db()
 
 # Fetch data from database
-FetchData._show_results(conn, database_tables[0])
-
-if __name__ == "__main__":
-    df_orgs
+FetchData(conn, database_tables[0])._show_results()
+FetchData(conn, database_tables[1])._show_results()
     

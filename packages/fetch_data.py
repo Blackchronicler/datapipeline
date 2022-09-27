@@ -18,6 +18,7 @@ class FetchData:
         except Exception as e:
             print(f"Error while fetching data: {str(e)}")
             self.conn.rollback()
+            return 1
         
         cur.close()
         self.conn.close()
@@ -32,3 +33,4 @@ class FetchData:
                 
         except Exception as e:
             print(f" Preview unavailable due to this error: {str(e)}")
+            exit(1)

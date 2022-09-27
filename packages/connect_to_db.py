@@ -1,6 +1,5 @@
 # Importing necessary libraries
 import psycopg2
-from psycopg2.pool import ThreadedConnectionPool
 
 class ConnectToDatabase:
     
@@ -29,12 +28,10 @@ class ConnectToDatabase:
         try:
             print("\n", "Connecting to the PostgreSQL database...Please wait...", "\n", sep="")
             conn= psycopg2.connect(**db_parameters)
-            print("Connection successful :) ")
+            print("Connection successful :) ", "\n", sep="")
             return conn
 
         except Exception as e:
             print(f"Connection to database was unsuccessful because: {str(e)}")
-            #exit(1)
+            exit(1)
             
-if __name__ == "__main__":
-    ConnectToDatabase._connecting_to_db()

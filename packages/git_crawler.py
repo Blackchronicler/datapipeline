@@ -27,10 +27,12 @@ class GitCrawler:
 
         except Exception as e:
             print(f"We have the following problem with \"User Name\": {str(e)}")
+            exit(1)
         
         
     def _getting_languages_used(self):
         """ Getting all programming languages being used in the organisation """
+        
         try:
             orga = self.g.get_organization(self.git_entity)
             repos = list(orga.get_repos(type="all", sort="full_name"))
@@ -44,11 +46,12 @@ class GitCrawler:
                         languages_used[language] = (languages_used[language] + langs_used[language])
             df = pd.DataFrame(list(languages_used.items()), columns=["language_typ", "bytes"])
             df["organisation_name"] = [orga.login for _ in range(len(df))]
+            print("Language(s) have been crawled from GitHub", "\n", sep="")
             return df
         
         except Exception as e:
             print(f'We have the following problem with \"Organisation Languages\": {str(e)}')
-            #exit(1)
+            exit(1)
         
             
     def _getting_organisation_details(self):
@@ -69,13 +72,9 @@ class GitCrawler:
                 "number of languages" : [len(self._getting_languages_used())]
                 }
             df = pd.DataFrame(data_collected)
+            print("Organisation(s) have been crawled from GitHub", "\n", sep="")
             return df
                 
         except Exception as e:
             print(f'We have the following problem with \"Organisation Details\": {str(e)}')
-            #exit(1) 
-
-## Testing Stuff -> to be deleted
-# if __name__ == "__main__":
-#     sample = GitCrawler("OSGeo")._getting_languages_used()
-#     print(sample.head())
+            exit(1) 
