@@ -1,8 +1,8 @@
 # Importing necessary libraries
-from scr.main.connect_to_db import ConnectToDatabase
-import scr.main.create_tables_db as create_tables_db
-from scr.main.git_crawler import GitCrawler
-from scr.main.load_db import PopulateDatabase
+from src.main.connect_to_db import ConnectToDatabase
+import src.main.create_tables_db as create_tables_db
+from src.main.git_crawler import GitCrawler
+from src.main.load_db import PopulateDatabase
 from main.fetch_data import FetchData
 import pandas as pd
 
