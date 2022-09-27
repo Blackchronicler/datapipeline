@@ -45,11 +45,12 @@ class GitCrawler:
                         languages_used[language] = (languages_used[language] + langs_used[language])
             df = pd.DataFrame(list(languages_used.items()), columns=["language_typ", "bytes"])
             df["organisation_name"] = [orga.login for _ in range(len(df))]
+            return df
 
         except Exception as e:
             print(f'We have the following problem with \"Organisation Languages\": {str(e)}')
+            exit(1)
 
-        return df
 
     def _getting_organisation_details(self):
         """
@@ -77,9 +78,4 @@ class GitCrawler:
 
         except Exception as e:
             return f'We have the following problem with \"Organisation Details\": {str(e)}'
-
-
-if __name__ == "__main__":
-    # Git_Crawler("blackchronicler")._getting_user()
-    sample = GitCrawler("OSGeo")._getting_organisation_details()
-    print(sample)
+        exit(1)
