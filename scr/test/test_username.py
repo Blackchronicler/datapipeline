@@ -1,17 +1,15 @@
 import json
 
-from github import Github
-
-import git_crawler
-from base import PyGithubTestCase
+from main.git_crawler import GitCrawler
+from test.base import PyGithubTestCase
 
 
 class TestUser(PyGithubTestCase):
 
     def test_username(self):
-        user = git_crawler.GitCrawler("octocat")._getting_user()
+        user = GitCrawler("octocat")._getting_user()
 
-        with open('./user.json', 'rb') as f:
+        with open('user.json', 'rb') as f:
             expected_body = json.load(f)
 
         self.assertEqual(user.login, expected_body['login'])  # Tr
@@ -27,4 +25,5 @@ class TestUser(PyGithubTestCase):
 
         print(org_details)
         print(sample)
-        #self.assertEqual(34, sample)  # Tr"""
+        #self.assertEqual(34, sample)  # Tr
+        """

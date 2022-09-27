@@ -5,7 +5,7 @@ import pandas as pd
 class GitCrawler:
     ## Getting PAT for auth @ GitHub
     """
-    with open("./pat.txt", "r") as f:
+    with open("../../pat.txt", "r") as f:
         access_tokens = f.readlines()
         user_token = access_tokens[0]
         pwd_token = access_tokens[1]

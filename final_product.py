@@ -1,14 +1,14 @@
 # Importing necessary libraries
-from packages.connect_to_db import ConnectToDatabase
-import packages.create_tables_db as create_tables_db
-from packages.git_crawler import GitCrawler
-from packages.load_db import PopulateDatabase
-from packages.fetch_data import FetchData
+from scr.main.connect_to_db import ConnectToDatabase
+import scr.main.create_tables_db as create_tables_db
+from scr.main.git_crawler import GitCrawler
+from scr.main.load_db import PopulateDatabase
+from main.fetch_data import FetchData
 import pandas as pd
 
-#orgs_wanted = ["facebook", "netflix", "twitter", "adobe", "ubuntu", "OSGeo"]
+# orgs_wanted = ["facebook", "netflix", "twitter", "adobe", "ubuntu", "OSGeo"]
 orgs_wanted = ["OSGeo"]
-database_tables = ["languages", "organisation"] 
+database_tables = ["languages", "organisation"]
 
 # Connection to Database
 conn = ConnectToDatabase._connecting_to_db()
@@ -27,7 +27,7 @@ for org in orgs_wanted:
 
 # Combining all the dataframes to a single dataframe    
 final_df_orgs = pd.concat(df_orgs, axis=0)
-final_df_orgs = final_df_orgs.reset_index(drop=True)    # Organisation
+final_df_orgs = final_df_orgs.reset_index(drop=True)  # Organisation
 final_df_langs = pd.concat(df_langs, axis=0)
 final_df_langs = final_df_langs.reset_index(drop=True)  # Languages
 
@@ -38,4 +38,3 @@ PopulateDatabase(final_df_orgs, database_tables[1])._populate_db()
 # Fetch data from database
 FetchData(database_tables[0])._show_results()
 FetchData(database_tables[1])._show_results()
-    
