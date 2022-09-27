@@ -1,3 +1,5 @@
+from packages.connect_to_db import ConnectToDatabase as cd
+
 class FetchData:
     
     def __init__(self, conn, db_table : str) -> None:
@@ -8,20 +10,22 @@ class FetchData:
         """ Check data availability in the DB """
         
         sample_db = 0
-        cur = self.conn.cursor()
+        conn = self.conn
+        cur = conn.cursor()
         try:
             cur.execute(f"SELECT * FROM {self.db_table};")
             sample_db = cur.fetchall()
-            self.conn.commit()
+            conn.commit()
+            print(f"Fetching Data from {str(self.db_table)}")
             return  sample_db
         
         except Exception as e:
             print(f"Error while fetching data: {str(e)}")
-            self.conn.rollback()
+            conn.rollback()
             return 1
         
         cur.close()
-        self.conn.close()
+        conn.close()
 
     def _show_results(self):
         """ Preview into the data from the DB """

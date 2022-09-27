@@ -18,12 +18,12 @@ class PopulateDatabase:
         cur = conn.cursor()
         try:
             cur.copy_from(buffer, self.table_name, sep=",")
-            self.conn.commit()
-            print(f"Data has been uploaded to the table: {self.table_name} in the DB. :D ")
+            conn.commit()
+            print(f"Data has been uploaded to the table: {self.table_name} in the DB :D ")
             
         except Exception as e:
             print(f"Error while populating table(s): {str(e)}")
-            self.conn.rollback()
+            conn.rollback()
 
         cur.close()
-        self.conn.close()
+        conn.close()

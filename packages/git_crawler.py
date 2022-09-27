@@ -11,8 +11,8 @@ class GitCrawler:
         pwd_token = access_tokens[1]
 
     ## Instantiating GitHub
-    g = Github(login_or_token= user_token, password= pwd_token)
-    #g = Github()
+    #g = Github(login_or_token= user_token, password= pwd_token)
+    g = Github()
 
     def __init__(self, git_entity : str) -> None:
         self.git_entity = git_entity
