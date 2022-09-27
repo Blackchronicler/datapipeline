@@ -1,16 +1,16 @@
-from main.connect_to_db import ConnectToDatabase as cd
-
 class FetchData:
     
-    def __init__(self, db_table : str) -> None:
+    def __init__(self, conn, db_table : str) -> None:
+        self.conn = conn
         self.db_table = db_table
 
     def _fetch_data(self):
         """ Check data availability in the DB """
 
-        conn = cd._connecting_to_db()
+        sample_db = 0
         cur = conn.cursor()
         try:
+            print(f"This are the results of the query made to the table \"{str(self.db_table)}\".", "\n", sep="")
             cur.execute(f"SELECT * FROM {self.db_table};")
             sample_db = cur.fetchall()
             conn.commit()
@@ -21,9 +21,7 @@ class FetchData:
             conn.rollback()
             return 1
         
-        cur.close()
-        conn.close()
-
+        
     def _show_results(self):
         """ Preview into the data from the DB """
         
@@ -33,5 +31,5 @@ class FetchData:
                 print(record)
                 
         except Exception as e:
-            print(f" Preview unavailable due to this error: {str(e)}")
+            print(f"Preview of the results unavailable due to this error: {str(e)}")
             exit(1)
