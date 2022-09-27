@@ -3,7 +3,6 @@ from packages.connect_to_db import ConnectToDatabase as cd
 class FetchData:
     
     def __init__(self, db_table : str) -> None:
-        self.conn = conn
         self.db_table = db_table
 
     def _fetch_data(self):
