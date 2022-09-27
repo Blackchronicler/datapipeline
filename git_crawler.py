@@ -11,8 +11,8 @@ class GitCrawler:
         pwd_token = access_tokens[1]
 
     ## Instantiating GitHub
-    #g = Github(login_or_token= user_token, password= pwd_token)
-    g = Github()
+    g = Github(login_or_token= user_token, password= pwd_token)
+    #g = Github()
 
     def __init__(self, git_entity : str) -> None:
         self.git_entity = git_entity
@@ -34,8 +34,8 @@ class GitCrawler:
         """ Getting all programming languages being used in the organisation """
         
         try:
-            orga = self.g.get_organization(self.git_entity)
-            repos = list(orga.get_repos(type="all", sort="full_name"))
+            org = self.g.get_organization(self.git_entity)
+            repos = list(org.get_repos(type="all", sort="full_name"))
             languages_used = {}
             for repo in repos[:5]:
                 langs_used = repo.get_languages()
@@ -45,8 +45,7 @@ class GitCrawler:
                     else:
                         languages_used[language] = (languages_used[language] + langs_used[language])
             df = pd.DataFrame(list(languages_used.items()), columns=["language_typ", "bytes"])
-            df["organisation_name"] = [orga.login for _ in range(len(df))]
-            print("Language(s) have been crawled from GitHub", "\n", sep="")
+            df["organisation_name"] = [org.login for _ in range(len(df))]
             return df
         
         except Exception as e:
@@ -61,18 +60,17 @@ class GitCrawler:
         
         """
         try:       
-            orga = self.g.get_organization(self.git_entity)
-            orga_name = orga.login
-            members = list(orga.get_members(filter_="all"))
-            repos = list(orga.get_repos(type= "all", sort= "full_name"))
+            org = self.g.get_organization(self.git_entity)
+            org_name = org.login
+            members = list(org.get_members(filter_="all"))
+            repos = list(org.get_repos(type= "all", sort= "full_name"))
             data_collected = {
-                "organisation_name" : [orga_name],
+                "organisation_name" : [org_name],
                 "number of members" : [len(members)],
                 "number of repositories" : [len(repos)],
                 "number of languages" : [len(self._getting_languages_used())]
                 }
             df = pd.DataFrame(data_collected)
-            print("Organisation(s) have been crawled from GitHub", "\n", sep="")
             return df
                 
         except Exception as e:

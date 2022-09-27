@@ -1,6 +1,3 @@
-# Importing necessary libraries
-#from packages.connect_to_db import ConnectToDatabase
-
 #  Tables and queries for database
 database_tables = ["org_langs", "languages", "organisation"]
 create_queries = {
@@ -63,7 +60,6 @@ def main(conn):
     try:
         delete_tables_db(conn)
         create_tables_db(conn)
-        conn.close()
         
     except Exception as e:
         print(f"Error while running the main method in create_tables_db file: {str(e)}")

@@ -10,10 +10,10 @@ class ConnectToDatabase:
         """ Connect to the PostgreSQL database server """
 
         # # Getting PAT for auth @ Database
-        # with open("pat.txt", "r") as f:
-        #     access_tokens = f.readlines()
-        #     user_token = access_tokens[2]
-        #     pwd_token = access_tokens[3]
+        with open("pat.txt", "r") as f:
+            access_tokens = f.readlines()
+            user_token = access_tokens[2]
+            pwd_token = access_tokens[3]
         
         # Connection details
         db_parameters = {
@@ -22,7 +22,7 @@ class ConnectToDatabase:
         "user" : "thierry",
         "password" : "admin",
         "port" : 5432,
-        "options" : "-c search_path=dbo,github"
+        "options" : "-c search_path=dbo,github"  # Choosing which schemata one wants
         }
         
         try:
@@ -32,6 +32,5 @@ class ConnectToDatabase:
             return conn
 
         except Exception as e:
-            print(f"Connection to database was unsuccessful because: {str(e)}")
+            print(f"Sorry, the connection to the database was unsuccessful because: {str(e)}")
             exit(1)
-            
