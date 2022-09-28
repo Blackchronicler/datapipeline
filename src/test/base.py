@@ -1,5 +1,7 @@
 import re
 from unittest import TestCase
+from test.js import Constants
+import json
 
 import httpretty
 
@@ -10,21 +12,28 @@ class JsonContent:
     def __init__(self, name):
         self.name = name
 
-    def __get__(self, instance, owner):
+    """def __get__(self, instance, owner):
         if instance is None:
             return owner
 
-        with open(f'{self.name}.json') as file:
+        with open(f'./{self.name}.json') as file:
             setattr(instance, self.name, file.read())
 
         return getattr(instance, self.name)
+        """
+    # def __get__(self):
+    #    user = json.loads(Constants.user)
 
 
 class MockGithubResponse:
-    user = JsonContent('user')
+    # user = JsonContent('user')
+    user = json.loads(Constants.user)
+    print(type(user))
     # add any Github object you need here
-    org = JsonContent('org')
-    members = JsonContent('members')
+    org = json.loads(Constants.org)
+    print(type(org))
+    # org = JsonContent('org')
+    #members = JsonContent('members')
 
 
 class PyGithubTestCase(TestCase):
@@ -58,3 +67,7 @@ class PyGithubTestCase(TestCase):
 
     def tearDown(self):
         httpretty.disable()
+
+
+if __name__ == "__main__":
+    print(type(MockGithubResponse.user))
