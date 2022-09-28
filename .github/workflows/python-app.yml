@@ -16,9 +16,22 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: GithubCrawler
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout git repository
+      uses: actions/checkout@v3
     - name: Set up Python 3.8
       uses: actions/setup-python@v3
       with:
@@ -32,3 +45,7 @@ jobs:
       run: |
         cd src
         python3 -m unittest
+      env:
+        POSTGRES_HOST: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_PORt: 5432

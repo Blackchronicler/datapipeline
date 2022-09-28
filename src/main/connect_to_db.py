@@ -1,5 +1,6 @@
 # Importing necessary libraries
 import psycopg2
+import os
 
 
 class ConnectToDatabase:
@@ -12,11 +13,11 @@ class ConnectToDatabase:
 
         # Connection details
         db_parameters = {
-            "host": "localhost",
+            "host": os.getenv("POSTGRES_HOST"),
             "dbname": "GithubCrawler",
             "user": "postgres",
             "password": "postgres",
-            "port": 5432,
+            "port": 5432
         }
 
         try:
