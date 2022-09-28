@@ -3,9 +3,19 @@ import pandas as pd
 
 
 class GitCrawler:
-    
+    """
+    with open("./pat.txt", "r") as f:
+        access_tokens = f.readlines()
+        user_token = access_tokens[0]
+        pwd_token = access_tokens[1]
+        # print(user, pwd_token, sep="")
+
     # Instantiating GitHub
-    g = Github()
+    g = Github(login_or_token=user_token, password=pwd_token)
+
+    """
+    # Instantiating GitHub
+    g = Github("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")
 
     def __init__(self, git_entity: str) -> None:
         self.git_entity = git_entity
@@ -15,14 +25,14 @@ class GitCrawler:
 
         try:
             user = self.g.get_user(self.git_entity)
-            return (f"The User\'s name is: {user.name}")
+            return user
 
         except Exception as e:
             print(f"We have the following problem with \"User Name\": {str(e)}")
             exit(1)
 
     def _getting_languages_used(self):
-        
+
         """ Getting all programming languages being used in the organisation """
         try:
             org = self.g.get_organization(self.git_entity)
@@ -32,7 +42,7 @@ class GitCrawler:
                 langs_used = repo.get_languages()
                 for language in langs_used:
                     if language not in languages_used:
-                        languages_used[language] = langs_used[language] 
+                        languages_used[language] = langs_used[language]
                     else:
                         languages_used[language] = (languages_used[language] + langs_used[language])
             df = pd.DataFrame(list(languages_used.items()), columns=["language_typ", "bytes"])
@@ -42,7 +52,6 @@ class GitCrawler:
         except Exception as e:
             print(f'We have the following problem with \"Organisation Languages\": {str(e)}')
             exit(1)
-
 
     def _getting_organisation_details(self):
         """
@@ -61,7 +70,7 @@ class GitCrawler:
                 "number of repositories": [len(repos)],
                 "number of languages": [len(self._getting_languages_used())]
             }
-            
+
             df = pd.DataFrame(data_collected)
             return df
 

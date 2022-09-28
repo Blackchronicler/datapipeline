@@ -14,7 +14,7 @@ class JsonContent:
         if instance is None:
             return owner
 
-        with open(f'./{self.name}.json') as file:
+        with open(f'{self.name}.json') as file:
             setattr(instance, self.name, file.read())
 
         return getattr(instance, self.name)

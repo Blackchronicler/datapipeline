@@ -8,17 +8,17 @@ class FetchData:
         """ Check data availability in the DB """
 
         sample_db = 0
-        cur = conn.cursor()
+        cur = self.conn.cursor()
         try:
             print(f"This are the results of the query made to the table \"{str(self.db_table)}\".", "\n", sep="")
             cur.execute(f"SELECT * FROM {self.db_table};")
             sample_db = cur.fetchall()
-            conn.commit()
+            self.conn.commit()
             return  sample_db
         
         except Exception as e:
             print(f"Error while fetching data: {str(e)}")
-            conn.rollback()
+            self.conn.rollback()
             return 1
         
         

@@ -9,7 +9,7 @@ class TestUser(PyGithubTestCase):
     def test_username(self):
         user = GitCrawler("octocat")._getting_user()
 
-        with open('user.json', 'rb') as f:
+        with open('../main/user.json', 'rb') as f:
             expected_body = json.load(f)
 
         self.assertEqual(user.login, expected_body['login'])  # Tr

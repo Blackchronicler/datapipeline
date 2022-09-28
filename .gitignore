@@ -1,6 +1,6 @@
 venv_lf8/
 scrapwork.py
-pat.txt
+src/main/pat.txt
 __pycache__/
 *.pyc
 extract_data_request_mod.py

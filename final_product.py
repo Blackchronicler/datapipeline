@@ -1,14 +1,14 @@
 # Importing necessary libraries
-from connect_to_db import ConnectToDatabase
-import create_tables_db as create_tables_db
-from git_crawler import GitCrawler
-from load_db import PopulateDatabase
-from fetch_data import FetchData
+from main.connect_to_db import ConnectToDatabase
+import main.create_tables_db as create_tables_db
+from main.git_crawler import GitCrawler
+from main.load_db import PopulateDatabase
+from main.fetch_data import FetchData
 import pandas as pd
 
 def final_program():
-    #orgs_wanted = ["facebook", "netflix", "twitter", "adobe", "ubuntu", "OSGeo"]
-    orgs_wanted = ["OSGeo"]
+    orgs_wanted = ["facebook", "netflix", "twitter", "adobe", "ubuntu", "OSGeo"]
+    #orgs_wanted = ["OSGeo"]
     database_tables = ["languages", "organisation"] 
 
     # Opening connection to Database

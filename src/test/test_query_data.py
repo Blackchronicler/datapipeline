@@ -1,6 +1,5 @@
-from main.query_data import QueryData as QD
 import unittest
-from main import query_data
+from main import calc_propotion
 
 
 class TestQueryData(unittest.TestCase):
@@ -11,9 +10,9 @@ class TestQueryData(unittest.TestCase):
                        ('Ruby', 78218), ('CMake', 70457), ('Rust', 68368), ('Thrift', 39026), ('Kotlin', 25953),
                        ('Lex', 14469), ('Batchfile', 9238), ('Makefile', 9170), ('Smalltalk', 5432),
                        ('PowerShell', 3000), ('HTML', 2613), ('Dockerfile', 2559), ('Gnuplot', 1261)]
-        proportion = QD.get_proportion(self, langs_bytes=langs_bytes, lang="Java", total_bytes=74114232)
+        proportion = calc_propotion.get_proportion(langs_bytes=langs_bytes, lang="Java", total_bytes=74114232)
         self.assertEqual(454.4026712710185, proportion)
 
     def test_get_total_proportion(self):
-        total = query_data.get_total_proportion(454.4026712710185, 454.4026712710185)
+        total = calc_propotion.get_total_proportion(454.4026712710185, 454.4026712710185)
         self.assertEqual(908.805342542037, total)
