@@ -1,3 +1,6 @@
+from unittest import result
+
+
 class FetchData:
     
     def __init__(self, conn, db_table : str) -> None:
@@ -28,9 +31,15 @@ class FetchData:
         
         try:
             results = self._fetch_data()
-            for record in results[:10]:     # Adjust results limit according to needs
-                print(record)
+            print(results)
+            # for record in results[:10]:     # Adjust results limit according to needs
+            #     print(record)
                 
         except Exception as e:
             print(f"Preview of the results unavailable due to this error: {str(e)}")
             exit(1)
+            
+if __name__ == "__main__":
+    from connect_to_db import ConnectToDatabase
+    conn = ConnectToDatabase._connecting_to_db()
+    FetchData(conn, "languages")._show_results()

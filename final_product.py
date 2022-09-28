@@ -3,7 +3,7 @@ from connect_to_db import ConnectToDatabase
 import create_tables_db as create_tables_db
 from git_crawler import GitCrawler
 from load_db import PopulateDatabase
-from fetch_data import FetchData
+from sample_data import FetchData
 import pandas as pd
 
 def final_program():
