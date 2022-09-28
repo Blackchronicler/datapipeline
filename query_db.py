@@ -1,9 +1,9 @@
-from connect_to_db import ConnectToDatabase as CD
+from connect_to_db import ConnectToDatabase as cd
 
 
 class QueryData:
     
-    conn = CD._connecting_to_db()
+    conn = cd._connecting_to_db()
     cur = conn.cursor()
 
     def get_langs_bytes(self, org):

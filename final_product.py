@@ -3,12 +3,12 @@ from connect_to_db import ConnectToDatabase
 import create_tables_db as create_tables_db
 from git_crawler import GitCrawler
 from load_db import PopulateDatabase
-from sample_data import FetchData
+from sample_data import SampleData
 import pandas as pd
 
 def final_program():
-    #orgs_wanted = ["facebook", "netflix", "twitter", "adobe", "ubuntu", "OSGeo"]
-    orgs_wanted = ["OSGeo"]
+    orgs_wanted = ["facebook", "netflix", "twitter", "adobe", "ubuntu", "OSGeo"]
+    #orgs_wanted = ["OSGeo"]
     database_tables = ["languages", "organisation"] 
 
     # Opening connection to Database
@@ -38,8 +38,8 @@ def final_program():
     PopulateDatabase(conn, final_df_orgs, database_tables[1])._populate_db()
 
     # Fetch data from database
-    FetchData(conn, database_tables[0])._show_results()
-    FetchData(conn, database_tables[1])._show_results()
+    SampleData(conn, database_tables[0])._show_results()
+    SampleData(conn, database_tables[1])._show_results()
 
     # Closing connection to Database
     conn.close()

@@ -20,5 +20,3 @@ CREATE TABLE IF NOT EXISTS orga_langs (
                                         orga_langs_id SERIAL NOT NULL PRIMARY KEY,
                                         organisation_id int NOT NULL REFERENCES organisation(orga_id),
                                         language_typ_id int NOT NULL REFERENCES languages(lang_id));
-
-SELECT * FROM {self.db_table};

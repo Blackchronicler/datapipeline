@@ -1,13 +1,13 @@
 from unittest import result
 
 
-class FetchData:
+class SampleData:
     
     def __init__(self, conn, db_table : str) -> None:
         self.conn = conn
         self.db_table = db_table
 
-    def _fetch_data(self):
+    def _sample_data(self):
         """ Check data availability in the DB """
         
         sample_db = 0
@@ -30,7 +30,7 @@ class FetchData:
         """ Preview into the data from the DB """
         
         try:
-            results = self._fetch_data()
+            results = self._sample_data()
             print(results)
             # for record in results[:10]:     # Adjust results limit according to needs
             #     print(record)
@@ -42,4 +42,4 @@ class FetchData:
 if __name__ == "__main__":
     from connect_to_db import ConnectToDatabase
     conn = ConnectToDatabase._connecting_to_db()
-    FetchData(conn, "languages")._show_results()
+    SampleData(conn, "languages")._show_results()
