@@ -15,7 +15,7 @@ class GitCrawler:
 
     """
     # Instantiating GitHub
-    g = Github("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")
+    g = Github()
 
     def __init__(self, git_entity: str) -> None:
         self.git_entity = git_entity
