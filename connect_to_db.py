@@ -1,5 +1,6 @@
 # Importing necessary libraries
 import psycopg2
+import env as env_var
 
 class ConnectToDatabase:
     
@@ -9,18 +10,16 @@ class ConnectToDatabase:
     def _connecting_to_db():
         """ Connect to the PostgreSQL database server """
 
-        # # Getting PAT for auth @ Database
-        with open("pat.txt", "r") as f:
-            access_tokens = f.readlines()
-            user_token = access_tokens[2]
-            pwd_token = access_tokens[3]
+        ## Getting PAT for auth @ Database
+        user_token = env_var.DB_USER
+        pwd_token = env_var.DB_PASSWORD
         
         # Connection details
         db_parameters = {
         "host" : "localhost",
         "dbname" : "wsl",
-        "user" : "thierry",
-        "password" : "admin",
+        "user" : user_token,
+        "password" : pwd_token,
         "port" : 5432,
         "options" : "-c search_path=dbo,github"  # Choosing which schemata one wants
         }

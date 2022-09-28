@@ -1,14 +1,13 @@
 # Importing necessary libraries
 from github import Github
 import pandas as pd
+import env as env_var
 
 class GitCrawler:
         
     ## Getting PAT for auth @ GitHub
-    with open("pat.txt", "r") as f:
-        access_tokens = f.readlines()
-        user_token = access_tokens[0]
-        pwd_token = access_tokens[1]
+    user_token = env_var.API_USER
+    pwd_token = env_var.API_PASSWORD
 
     ## Instantiating GitHub
     g = Github(login_or_token= user_token, password= pwd_token)
@@ -75,4 +74,4 @@ class GitCrawler:
                 
         except Exception as e:
             print(f'We have the following problem with \"Organisation Details\": {str(e)}')
-            exit(1) 
+            exit(1)
