@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 extract_data_request_mod.py
 env.py
+*.ipynb_checkpoints

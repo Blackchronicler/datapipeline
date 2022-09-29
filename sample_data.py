@@ -16,7 +16,6 @@ class SampleData:
             print(f"This are the results of the query made to the table \"{str(self.db_table)}\".", "\n", sep="")
             cur.execute(f"SELECT * FROM {self.db_table};")
             sample_db = cur.fetchall()
-            self.conn.commit()
             cur.close()
             return sample_db
         

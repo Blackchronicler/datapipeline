@@ -21,7 +21,7 @@ class ConnectToDatabase:
         "user" : user_token,
         "password" : pwd_token,
         "port" : 5432,
-        "options" : "-c search_path=dbo,github"  # Choosing which schemata one wants
+        "options" : "-c search_path=dbo,github"  # Choosing which schemata should be used
         }
         
         try:
