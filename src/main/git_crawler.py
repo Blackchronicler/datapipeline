@@ -77,3 +77,8 @@ class GitCrawler:
         except Exception as e:
             print(f'We have the following problem with \"Organisation Details\": {str(e)}')
             exit(1)
+
+
+if __name__ == "__main__":
+    s = GitCrawler("OSGeo")._getting_languages_used()
+    print(s)
