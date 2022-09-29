@@ -28,10 +28,10 @@ class JsonContent:
 class MockGithubResponse:
     # user = JsonContent('user')
     user = json.loads(Constants.user)
-    print(type(user))
+    #print(type(user))
     # add any Github object you need here
     org = json.loads(Constants.org)
-    print(type(org))
+    #print(type(org))
     # org = JsonContent('org')
     #members = JsonContent('members')
 
@@ -69,5 +69,5 @@ class PyGithubTestCase(TestCase):
         httpretty.disable()
 
 
-if __name__ == "__main__":
-    print(type(MockGithubResponse.user))
+#if __name__ == "__main__":
+    #print(type(MockGithubResponse.user))
