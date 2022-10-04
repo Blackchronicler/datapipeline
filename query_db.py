@@ -28,7 +28,7 @@ class QueryData:
     def _get_langs_bytes(self, org):
         try:
             self.cur.execute(
-                f"select language_typ, number_of_bytes from github.languages where organisation_name = '{org}' order by number_of_bytes desc")
+                f"select language_typ, number_of_bytes from github.languages where organisation_name = '{org}' WHERE organisation_name = '{org}';")
             langs_bytes = self.cur.fetchall()
             return langs_bytes
         
