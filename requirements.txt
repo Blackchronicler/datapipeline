@@ -2,3 +2,4 @@ pandas
 pygithub
 httpretty
 psycopg2-binary
+certifi>=2023.7.22
